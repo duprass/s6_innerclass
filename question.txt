@@ -1,0 +1,97 @@
+1. Which interfaces are declared correctly?
+   a)interface Sample{
+         public static final int COUNT=1;
+     }
+   b)interface Sample{
+         int COUNT=1;
+     }
+   ñ)interface Sample{
+	       void test(final int what);
+     }
+   d)interface Sample{
+	       private static void test( int what);
+     }
+
+Answer:a,b,c
+
+
+2.Consider the following code 
+  public class Music implements Cloneable{
+    private int countAlbums=0;
+
+    public Music(int countAlbums){
+        this.countAlbums=countAlbums;
+    }
+
+    public Music(){
+        this(0);
+    }
+
+    public void setCountAlbums(int countAlbums){
+        if (countAlbums>=0){
+            this.countAlbums=countAlbums;
+        } else {
+            System.out.println("Wrong value! CountAlbums must be >= 0");
+            return;
+        }
+    }
+
+    public int getCountAlbums(){
+        return countAlbums;
+    }
+
+    public Music clone() throws CloneNotSupportedException{
+        Music cloned = (Music) super.clone();
+        return cloned;
+    }
+
+    public static void main(String[] ar){
+      try {
+          Music ms = new Music(2);
+          Music ms2 = ms.clone();
+          ms.setCountAlbums(5);
+          System.out.print(ms.getCountAlbums() + ";");
+          System.out.println(ms2.getCountAlbums());
+      } catch (CloneNotSupportedException e){
+          e.printStackTrace();
+      }
+    }
+}
+
+  Select correct answers:
+    a class Music will print 5;5
+    b class Music will print 5;2
+    c class Music won't compile.
+    d class Music will throw an exception at runtime.
+
+Answer: d 
+
+3. Consider the following code 
+  public abstract class Artist {
+    String name;
+
+    abstract void Sing(String Song);
+
+    public Artist(String name){
+        this.name=name;
+    }
+
+    public Artist(){
+        this("");
+    }
+
+  }
+
+ interface AProducer {
+    void piar(Artist artist);
+    void createSong(String song);
+ }
+
+ The anonymous class can be represented: 
+ a.Artist bjork=new Artist("Bjork"){ //HERE SOME CODE };
+ b.Artist corner=new Artist("Corner");
+ c.AProducer woman=new AProducer();
+ d.AProducer artist=new AProducer(){//HERE SOME CODE};
+ 
+ Answer:a,d
+
